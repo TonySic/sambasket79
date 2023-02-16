@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->integer('numero');
-            $table->integer('date_commande');
+            $table->date('date_commande');
             $table->float('prix');
             $table->timestamps();
         });

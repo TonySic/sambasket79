@@ -19,7 +19,7 @@ class AdresseFactory extends Factory
     {
         return [
             'adresse' => fake()->streetAddress(),
-            'code_postal' => fake()->postcode(),
+            'code_postal' => strval(rand(10000,99999)),
             'ville' => fake()->city(),
             'user_id' => random_int(1, 30)
         ];

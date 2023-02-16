@@ -18,7 +18,10 @@ class CommandeFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => random_int(1, 30),
             'numero' => rand(0, 10000),
+            'date_commande' => date('Y-m-d'),
+            'prix' => rand(50,200),
         ];
     }
 }

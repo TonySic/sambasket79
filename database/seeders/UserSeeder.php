@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             'role_id' => 1
         ]);
 
-        // création de 8 users aléatoire
-        User::factory(8)->create();
+        // création de 28 users aléatoire
+        User::factory(28)->create();
     }
 }
