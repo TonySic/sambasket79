@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Taille extends Model
 {
     use HasFactory;
+
+    public function tailles_articles()
+    {
+        return $this->hasMany(TailleArticle::class);
+    }
 }
