@@ -9,6 +9,14 @@ class Article extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nom',
+        'description',
+        'image',
+        'prix',
+        'stock',
+    ];
+
     public function tailles()
     {
         return $this->belongsToMany(Taille::class, 'tailles_articles');

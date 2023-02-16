@@ -9,6 +9,13 @@ class Commande extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'numero',
+        'date_commande',
+        'prix',
+    ];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
