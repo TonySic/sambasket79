@@ -9,13 +9,13 @@ class Article extends Model
 {
     use HasFactory;
 
-    public function tailles_articles()
+    public function tailles()
     {
-        return $this->hasMany(TailleArticle::class);
+        return $this->belongsToMany(Taille::class, 'tailles_articles');
     }
 
-    public function commandes_articles()
+    public function commandes()
     {
-        return $this->hasMany(CommandeArticle::class);
+        return $this->belongsToMany(Commande::class, 'commandes_articles')->withPivot('quantite');
     }
 }

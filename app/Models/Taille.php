@@ -9,8 +9,8 @@ class Taille extends Model
 {
     use HasFactory;
 
-    public function tailles_articles()
+    public function articles()
     {
-        return $this->hasMany(TailleArticle::class);
+        return $this->belongsToMany(Article::class, 'tailles_articles');
     }
 }

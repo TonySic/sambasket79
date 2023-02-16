@@ -53,10 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'politique' => 'required', // on vérifie que la checkbox est cochée
-        ],
-        ['politique.required' => 'Veuillez cocher la case pour accepter les mentions légales et la politique de confidentialité']
-    );
+        ]);
     }
 
     /**

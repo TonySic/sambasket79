@@ -13,4 +13,9 @@ class Commande extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class, 'commandes_articles')->withPivot('quantite');
+    }
 }
