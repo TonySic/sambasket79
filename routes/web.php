@@ -1,8 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PanierController;
+use App\Http\Controllers\AdresseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,18 +20,28 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'boutique'])->name('boutique');
 
-Route::get('/politique', [App\Http\Controllers\HomeController::class, 'politique'])->name('politique');
+Route::get('/boutique', [HomeController::class, 'boutique'])->name('boutique');
 
-Route::get('/moncompte', [App\Http\Controllers\HomeController::class, 'moncompte'])->name('moncompte');
+Route::get('/politique', [HomeController::class, 'politique'])->name('politique');
 
-Auth::routes();
+Route::resource('/users', UserController::class)->except('index', 'create', 'store');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/adresses', AdresseController::class)->except('index', 'create', 'edit', 'show');
+
+Route::put('/user/modif-password/{user}', [UserController::class, 'updatePassword'])->name('updatePassword');
+
+Route::resource('/articles', ArticleController::class)->except('index', 'create');
+
+// Routes Panier 
+
+Route::get('/panier', [PanierController::class, 'show'])->name('panier');
+
+Route::post('panier/add/{article}', [PanierController::class, 'add'])->name('panier.add');
+
+Route::get('panier/remove/{article}', [PanierController::class, 'remove'])->name('panier.remove');
+
+Route::get('panier/empty', [PanierController::class, 'empty'])->name('panier.empty');

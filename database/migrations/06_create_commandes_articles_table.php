@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('commandes_articles', function (Blueprint $table) {
             $table->foreignId('article_id')->constrained();
             $table->foreignId('commande_id')->constrained();
-            $table->integer('quantite');
+            $table->integer('quantite')->length(2);
+            $table->string('initiales', 2)->nullable();
+            $table->integer('numero')->length(2)->nullable();
+            $table->string('flocage', 20)->nullable();
             $table->timestamps();
         });
     }

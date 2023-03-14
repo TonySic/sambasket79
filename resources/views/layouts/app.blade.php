@@ -13,17 +13,17 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
-                <img src="{{ asset('images/LOGO_BASKET_MONCOUTANT.png')}}" alt="Logo SAM Basket 79"> 
+                <a href="/"><img src="{{ asset('images/logo-sam-basket.png') }}" alt="Logo SAM Basket 79"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -55,11 +55,12 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->prenom }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a href="{{ route('moncompte')}}">Mon compte</a>
+                                    <a class="text-center" href="{{ route('users.edit', $user = Auth::user()) }}">Mon compte client</a>
+                                    <a class="text-center" href="{{ route('panier', $user = Auth::user())}}">Mon panier</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -99,6 +100,19 @@
             @yield('content')
         </main>
     </div>
+
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center p-2">
+                    <p>La Footixerie <i class="fa-regular fa-copyright"></i> 2022 (Tous droits réservés) 
+                    <br><i class="fa-brands fa-square-facebook fa-2x p-2"></i> <i class="fa-brands fa-instagram fa-2x p-2"></i> <i class="fa-brands fa-square-twitter fa-2x p-2"></i>
+                    </p>
+            </div>
+        </div>
+    </section>
+
+
 </body>
 
 </html>

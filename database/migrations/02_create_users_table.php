@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('email')->unique();
+            $table->string('nom', 25);
+            $table->string('prenom', 25);
+            $table->string('email', 50)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password', 255);
             $table->rememberToken();
             $table->timestamps();
             $table->foreignId('role_id')->default(1)->constrained();

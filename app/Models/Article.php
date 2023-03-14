@@ -14,8 +14,13 @@ class Article extends Model
         'description',
         'image',
         'prix',
-        'stock',
+        'disponible',
+        'initiales',
+        'flocage',
+        'numero',
     ];
+
+    protected $with = ['tailles'];
 
     public function tailles()
     {

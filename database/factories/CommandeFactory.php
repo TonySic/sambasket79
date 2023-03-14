@@ -19,7 +19,7 @@ class CommandeFactory extends Factory
     {
         return [
             'user_id' => random_int(1, 30),
-            'numero' => rand(0, 10000),
+            'numero' => rand(1000000, 9999999),
             'date_commande' => date('Y-m-d'),
             'prix' => rand(50,200),
         ];

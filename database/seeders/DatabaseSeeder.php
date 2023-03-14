@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             AdresseSeeder::class,
-            ArticleSeeder::class,
-            CommandeArticleSeeder::class,
-            CommandeSeeder::class,
             TailleSeeder::class,
+            ArticleSeeder::class,
             TailleArticleSeeder::class,
+            CommandeSeeder::class,
+            CommandeArticleSeeder::class,
         ]);
     }
 }

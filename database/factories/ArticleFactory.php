@@ -20,7 +20,7 @@ class ArticleFactory extends Factory
             'nom' => fake()->name(),
             'description' => fake()->text(),
             'prix' => random_int(0, 100),
-            'stock' => random_int(0, 50),
+            'disponible' => rand(0, 1),
             'image' => 'article.jpg'
         ];
     }

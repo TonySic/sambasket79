@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class HomeController extends Controller
 {
@@ -11,13 +12,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function politique()
     {
-        return view('home');
+        return view('politique');
     }
 
-   public function politique()
-   {
-       return view('politique');
-   }
+    public function boutique()
+    {
+        if (!session()->has('panier')) {
+            session()->put('panier', []);
+        }
+
+        $articles = Article::all();
+        return view('boutique', ['articles' => $articles]);
+    }
 }

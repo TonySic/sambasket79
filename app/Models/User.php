@@ -53,8 +53,8 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function adresses()
+    public function adresse()
     {
-        return $this->hasMany(Adresse::class);
+        return $this->hasOne(Adresse::class);
     }
 }

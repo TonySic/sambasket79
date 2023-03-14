@@ -1,3 +1,29 @@
 body {
-    font-family: 'Manrope', sans-serif;
+    background-color: white;
 }
+
+@font-face {
+    font-family: 'College';
+    src: url('../fonts/collegeb.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1, h3, h5 {
+    font-family: 'College', sans-serif;
+}
+
+nav, nav a, .boutonRouge, .dropdown-menu, .dropdown-menu a {
+    color: white !important;
+    background-color: #A81F24 !important;
+}
+
+footer {
+    background-color: #A81F24 !important;
+}
+
+a {
+    color:inherit !important;
+    text-decoration: none !important;
+}
+

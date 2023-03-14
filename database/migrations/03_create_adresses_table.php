@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('adresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('adresse');
-            $table->integer('code_postal');
-            $table->string('ville');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('adresse', 200);
+            $table->char('code_postal', 5);
+            $table->string('ville', 100);
             $table->timestamps();
         });
     }

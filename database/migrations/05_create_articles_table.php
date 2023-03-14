@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->text('description');
-            $table->string('image');
+            $table->string('nom', 25);
+            $table->string('description', 255);
+            $table->string('image', 25);
             $table->float('prix');
-            $table->integer('stock');
+            $table->boolean('disponible')->default(true);
+            $table->boolean('initiales')->default(true);
+            $table->boolean('flocage');
+            $table->boolean('numero');
             $table->timestamps();
         });
     }
