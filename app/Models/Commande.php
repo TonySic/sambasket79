@@ -13,6 +13,7 @@ class Commande extends Model
         'numero',
         'date_commande',
         'prix',
+        'user_id',
     ];
 
 

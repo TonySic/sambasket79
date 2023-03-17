@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('article_id')->constrained();
             $table->foreignId('commande_id')->constrained();
             $table->integer('quantite')->length(2);
+            $table->string('taille', 20);
             $table->string('initiales', 2)->nullable();
             $table->integer('numero')->length(2)->nullable();
             $table->string('flocage', 20)->nullable();

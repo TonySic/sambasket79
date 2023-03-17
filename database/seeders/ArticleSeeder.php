@@ -35,7 +35,7 @@ class ArticleSeeder extends Seeder
 
         Article::create([
             'nom' => 'Tee-shirt Ice-T Homme',
-            'description' => 'Disponible du S au 4XXL',
+            'description' => 'Disponible du S au XXL',
             'image' => 't-shirt-homme.png',
             'prix' => 16,
             'flocage' => true,

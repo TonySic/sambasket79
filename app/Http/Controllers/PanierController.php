@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 
 class PanierController extends Controller
 {
-    
+
 
     /**
      * Display the specified resource.
@@ -20,7 +20,7 @@ class PanierController extends Controller
     public function show()
     {
         $user = Auth::user();
-        
+
         // if ($user) {
         //     $user->load('adresses');
         // }
@@ -38,11 +38,25 @@ class PanierController extends Controller
     public function add(Article $article, Request $request)
     {
 
+        $request->validate(['taille' => 'required']);
+
         $panier = session()->get('panier');
         $quantite = $request->input('quantite');
         $initiales = $request->input('initiales');
         $flocage = $request->input('flocage');
         $numero = $request->input('numero');
+
+        if ($initiales != null) {
+            $article->prix += 2;
+        }
+
+        if ($flocage != null) {
+            $article->prix += 5;
+        }
+
+        if ($numero != null) {
+            $article->prix += 3.5;
+        }
 
         $detail_article = [
             'id' => $article->id,
@@ -54,6 +68,7 @@ class PanierController extends Controller
             'initiales' => $initiales,
             'flocage' => $flocage,
             'numero' => $numero,
+            'taille' => $request->taille,
         ];
 
         array_push($panier, $detail_article);
@@ -61,6 +76,19 @@ class PanierController extends Controller
         session()->put('panier', $panier);
 
         return redirect()->route('panier')->with('message', 'Le produit a été ajouté/modifié');
+    }
+
+    public function modifQuantite($key, Request $request)
+    {
+        $panier = session()->get('panier');
+        $request->validate([
+            'quantite' => 'required|min:1|max:10',
+        ]);
+        $panier[$key]['quantite'] = $request->quantite;
+
+        session()->put('panier', $panier);
+
+        return redirect()->route('panier')->with('message', 'Quantité modifiée');
     }
 
     /**
@@ -72,12 +100,18 @@ class PanierController extends Controller
     // Suppression d'un produit du panier
     public function remove($key)
     {
-    // Suppression du produit du panier par son identifiant
-    $panier = session()->get("panier"); // On récupère le panier en session
-    unset($panier[$key]); // On supprime le produit du tableau $panier
-    session()->put("panier", $panier); // On enregistre le panier
+        // Suppression du produit du panier par son identifiant
+        $panier = session()->get("panier"); // On récupère le panier en session
+        unset($panier[$key]); // On supprime le produit du tableau $panier
+        session()->put("panier", $panier); // On enregistre le panier
 
-    // Redirection vers le panier
-    return back()->withMessage("Produit retiré du panier");
-}
+        // Redirection vers le panier
+        return back()->withMessage("Produit retiré du panier");
+    }
+
+    public function empty()
+    {
+        session()->forget("panier"); // On supprime le panier en session
+        return redirect()->route('panier')->with('message', 'Le panier a été vidé');
+    }
 }

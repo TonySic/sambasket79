@@ -7,7 +7,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -17,6 +16,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="https://kit.fontawesome.com/a3b7cabc02.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -59,17 +60,23 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="text-center" href="{{ route('users.edit', $user = Auth::user()) }}">Mon compte client</a>
-                                    <a class="text-center" href="{{ route('panier', $user = Auth::user())}}">Mon panier</a>
+                                    <a class="text-center" href="{{ route('users.edit', $user = Auth::user()) }}">Mon
+                                        compte client</a><br>
+                                    <a class="text-center" href="{{ route('panier', $user = Auth::user()) }}">Mon
+                                        panier</a><br>
+                                    @if (Auth::user()->isAdmin())
+                                    <a class="text-center" href="{{ route('admin.index', $user = Auth::user()) }}">Ma page admin</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
+                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Déconnexion') }}
-                                    </a>
+                                            {{ __('Déconnexion') }}
+                                        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
                                 </div>
                             </li>
                         @endguest
@@ -77,6 +84,8 @@
                 </div>
             </div>
         </nav>
+
+
 
         <div class="container w-50 text-center p-3">
 
@@ -102,16 +111,24 @@
     </div>
 
     <section id="footer">
-        <div class="container">
+        <div class="container-fluid bg-dark">
             <div class="row">
-                <div class="col-md-12 text-center p-2">
-                    <p>La Footixerie <i class="fa-regular fa-copyright"></i> 2022 (Tous droits réservés) 
-                    <br><i class="fa-brands fa-square-facebook fa-2x p-2"></i> <i class="fa-brands fa-instagram fa-2x p-2"></i> <i class="fa-brands fa-square-twitter fa-2x p-2"></i>
-                    </p>
+                <div style="color: white" class="col-md-12 text-center p-2">
+                    <p><small>SAM BASKET 79 <i class="fa-regular fa-copyright"></i> 2023 (Tous droits réservés)
+                            <br><a href="https://www.facebook.com/sambasket79/?locale=fr_FR" target="_blank"
+                                class="fa-brands fa-square-facebook fa-2x p-2"></a>
+                            <a href="https://www.instagram.com/samb79320/" target="_blank"
+                                class="fa-brands fa-instagram fa-2x p-2"></a>
+                        </small></p>
+                </div>
             </div>
-        </div>
     </section>
 
+    @php
+        if (!session()->has('panier')) {
+            session()->put('panier', []);
+        }
+    @endphp
 
 </body>
 

@@ -115,12 +115,47 @@
         </div>
     @endif
 
+    {{-- LISTE COMMANDE --}}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">Mes commandes passees</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="color:#A81F24" scope="col">Numéro de commande</th>
+                            <th style="color:#A81F24" scope="col">Date</th>
+                            <th style="color:#A81F24" scope="col">Montant</th>
+                            <th style="color:#A81F24" scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($user->commandes as $commande)
+                            <tr>
+                                <td>{{ $commande->numero }}</td>
+                                <td>{{ date('d-m-Y', strtotime($commande->created_at)) }}</td>
+                                <td><strong>{{ number_format($commande->prix, 2, ',') }} €</strong></td>
+                                <td><a href="{{ route('commande.show', $commande) }}">
+                                        <button type="submit" class="btn btn-secondary">
+                                            {{ __('Détails') }}
+                                        </button></a></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+                
+        </div>
+    </div>
+
     <div class="row mb-2">
         <div class="col-md-4 text-center offset-md-4">
             <div class="row fs-4">
                 <h3 class="mb-3" style="color:black">SUPPRESSION DU COMPTE</h3>
                 <form action="{{ route('users.destroy', Auth::user()) }}" method="POST"> @method('delete') @csrf
-                    <button type="submit" class="m-1 btn btn-dark">Je supprime mon compte</button>
+                    <button type="submit" class="m-1 btn boutonRouge">Je supprime mon compte</button>
                 </form>
             </div>
         </div>

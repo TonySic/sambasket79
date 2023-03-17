@@ -1,33 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="fw-bold card-header">{{ __('Bienvenue !') }}</div>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('Vous êtes connecté à la boutique du SAM Basket 79 !') }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
 
         
         <div class="row">
-            <h1 class="text-center m-4">La boutique officielle !</h1>
+            <h1 class="text-center m-4">La boutique officielle du sam basket 79 !</h1>
             @foreach ($articles as $article)
-                <div class="border-danger card col-md-5 col-lg-3 p-3 m-3 table-hover" style="width: 18rem;">
+                <div class="border-danger card col-md-5 col-lg-3 p-3 m-3 shadow" style="width: 18rem;">
                     <a href="{{ route('articles.show', $article) }}">
                         <img class="d-block mx-auto card-img-top" img src="{{ asset("images/$article->image") }}" alt="{{ $article->nom }}">
                         <div class="card-body">

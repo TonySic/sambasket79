@@ -17,13 +17,11 @@ nav, nav a, .boutonRouge, .dropdown-menu, .dropdown-menu a {
     color: white !important;
     background-color: #A81F24 !important;
 }
-
-footer {
-    background-color: #A81F24 !important;
-}
-
 a {
     color:inherit !important;
     text-decoration: none !important;
 }
 
+.fa-brands:hover {
+    background-color: #A81F24;
+  }

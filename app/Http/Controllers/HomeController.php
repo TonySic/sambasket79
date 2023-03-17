@@ -20,10 +20,6 @@ class HomeController extends Controller
 
     public function boutique()
     {
-        if (!session()->has('panier')) {
-            session()->put('panier', []);
-        }
-
         $articles = Article::all();
         return view('boutique', ['articles' => $articles]);
     }

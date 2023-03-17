@@ -96,21 +96,6 @@ class TailleArticleSeeder extends Seeder
             'article_id' => 3,
         ]);
 
-        DB::table('tailles_articles')->insert([
-            'taille_id' => 16,
-            'article_id' => 3,
-        ]);
-
-        DB::table('tailles_articles')->insert([
-            'taille_id' => 17,
-            'article_id' => 3,
-        ]);
-
-        DB::table('tailles_articles')->insert([
-            'taille_id' => 18,
-            'article_id' => 3,
-        ]);
-
         // pantalon junior
 
         DB::table('tailles_articles')->insert([

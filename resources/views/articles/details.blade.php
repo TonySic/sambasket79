@@ -18,10 +18,10 @@
 
                     {{-- Taille --}}
                     <p style="color:dimgrey" class="text-center fw-bold mt-2">Taille :</p>
-                    <select class="border-dark form-select" aria-label="Default select example">
-                        <option selected>Choisir une taille...</option>
+                    <select name="taille" class="border-dark form-select" aria-label="Default select example">
+                        <option selected disabled="disabled">Choisir une taille...</option>
                         @foreach ($article->tailles as $taille)
-                            <option value="{{ $taille->id }}">{{ $taille->taille }}</option>
+                            <option value="{{ $taille->taille }}">{{ $taille->taille }}</option>
                         @endforeach
                     </select>
 
