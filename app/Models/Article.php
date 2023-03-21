@@ -29,6 +29,6 @@ class Article extends Model
 
     public function commandes()
     {
-        return $this->belongsToMany(Commande::class, 'commandes_articles')->withPivot('quantite');
+        return $this->belongsToMany(Commande::class, 'commandes_articles')->withPivot(['quantite', 'taille', 'numero', 'flocage', 'initiales', 'prix']);
     }
 }

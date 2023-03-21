@@ -20,11 +20,6 @@ class PanierController extends Controller
     public function show()
     {
         $user = Auth::user();
-
-        // if ($user) {
-        //     $user->load('adresses');
-        // }
-
         return view('panier.show', ['user' => $user]);
     }
 

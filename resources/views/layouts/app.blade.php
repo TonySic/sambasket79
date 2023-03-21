@@ -26,88 +26,92 @@
             <div class="container">
                 <a href="/"><img src="{{ asset('images/logo-sam-basket.png') }}" alt="Logo SAM Basket 79"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
 
-                    </ul>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
+                    <div class="mx-auto navbar-nav">
+
+                        <!-- liens pour les non connectés -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
-                                </li>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                             @endif
-
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
-                                </li>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
                             @endif
+
+                            <!-- liens pour les connectés -->
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->prenom }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="text-center" href="{{ route('users.edit', $user = Auth::user()) }}">Mon
-                                        compte client</a><br>
-                                    <a class="text-center" href="{{ route('panier', $user = Auth::user()) }}">Mon
-                                        panier</a><br>
-                                    @if (Auth::user()->isAdmin())
-                                    <a class="text-center" href="{{ route('admin.index', $user = Auth::user()) }}">Ma page admin</a>
-                                    @endif
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            {{ __('Déconnexion') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                </div>
-                            </li>
+                            <span class="mt-2 me-4 fw-bold">Bonjour {{ Auth::user()->prenom }}</span>
+                            <a class="nav-link" href="{{ route('users.edit', $user = Auth::user()) }}">Compte client</a>
+                            @if (Auth::user()->isAdmin())
+                                <a class="nav-link" href="{{ route('admin.index') }}">Page administrateur</a>
+                            @endif
+                            <a class="nav-link" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            {{ __('Déconnexion') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                         @endguest
-                    </ul>
-                </div>
+
+                        <!-- liens pour tous -->
+
+                        <a class="nav-link" href="{{ route('panier', $user = Auth::user()) }}"><i
+                            class="fa-solid fa-cart-shopping fa-2x"></i></a>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
-        </nav>
+    </div>
+    </nav>
 
 
 
-        <div class="container w-50 text-center p-3">
+    <div class="container w-50 text-center p-3">
 
-            @if (session()->has('message'))
-                <p class="alert alert-success">{{ session()->get('message') }}</p>
-            @endif
+        @if (session()->has('message'))
+            <p class="alert alert-success">{{ session()->get('message') }}</p>
+        @endif
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        </div>
+    </div>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <main class="py-4">
+        @yield('content')
+    </main>
     </div>
 
     <section id="footer">

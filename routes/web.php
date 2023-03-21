@@ -9,6 +9,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PanierController;
+use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\TailleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +43,6 @@ Route::get('panier/validation', [PanierController::class, 'validation'])->name('
 
 Route::resource('/commande', CommandeController::class)->except(['destroy']);
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+Route::resource('/tailles', TailleController::class);

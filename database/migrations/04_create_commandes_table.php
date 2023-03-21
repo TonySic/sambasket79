@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('numero')->length(7);
             $table->date('date_commande');
             $table->float('prix');
+            $table->boolean('traite');
             $table->timestamps();
         });
     }

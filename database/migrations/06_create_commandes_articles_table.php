@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('initiales', 2)->nullable();
             $table->integer('numero')->length(2)->nullable();
             $table->string('flocage', 20)->nullable();
+            $table->float('prix');
             $table->timestamps();
         });
     }

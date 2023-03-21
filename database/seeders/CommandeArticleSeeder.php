@@ -23,6 +23,8 @@ class CommandeArticleSeeder extends Seeder
                 'initiales' => null,
                 'numero' => rand(0, 99),
                 'flocage' => fake()->firstName(),
+                'prix' => floatval(rand(10, 35)),
+                'taille' => 'XS'
             ]);
         }
         

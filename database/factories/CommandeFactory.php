@@ -22,6 +22,7 @@ class CommandeFactory extends Factory
             'numero' => rand(1000000, 9999999),
             'date_commande' => date('Y-m-d'),
             'prix' => rand(50,200),
+            'traite' => rand(0, 1),
         ];
     }
 }

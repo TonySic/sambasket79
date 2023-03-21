@@ -14,6 +14,7 @@ class Commande extends Model
         'date_commande',
         'prix',
         'user_id',
+        'traite',
     ];
 
 
@@ -24,6 +25,6 @@ class Commande extends Model
 
     public function articles()
     {
-        return $this->belongsToMany(Article::class, 'commandes_articles')->withPivot('quantite');
+        return $this->belongsToMany(Article::class, 'commandes_articles')->withPivot(['quantite', 'taille', 'numero', 'flocage', 'initiales', 'prix']);
     }
 }

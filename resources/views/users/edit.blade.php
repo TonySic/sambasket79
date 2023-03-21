@@ -132,7 +132,7 @@
                     </thead>
                     <tbody>
                         @foreach ($user->commandes as $commande)
-                            <tr>
+                            <tr class="border-bottom border-secondary">
                                 <td>{{ $commande->numero }}</td>
                                 <td>{{ date('d-m-Y', strtotime($commande->created_at)) }}</td>
                                 <td><strong>{{ number_format($commande->prix, 2, ',') }} €</strong></td>
