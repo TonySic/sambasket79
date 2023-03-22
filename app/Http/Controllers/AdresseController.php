@@ -47,11 +47,6 @@ class AdresseController extends Controller
             'ville' => 'string|required|min:5|max:191'
         ]);
 
-        // $adresse->update([
-        //     'adresse' => $request->input('adresse'),
-        //     'code_postal' => $request->input('code_postal'),
-        //     'ville' => $request->input('ville')
-        // ]);
         $adress->update($request->all());
 
         return view('users.edit', ['user' => Auth::user()])->with('message', 'Adresse modifiée');

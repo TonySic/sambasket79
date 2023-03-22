@@ -1,16 +1,15 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\TailleController;
+use App\Http\Controllers\AdresseController;
 
 /*
 |--------------------------------------------------------------------------

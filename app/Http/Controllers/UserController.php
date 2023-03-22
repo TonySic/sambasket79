@@ -65,10 +65,10 @@ class UserController extends Controller
             'new_password' => 'min:8|required|string|confirmed',
             'password' => ['required',
             Password::min(8)
-                ->mixedCase()
-                ->letters()
-                ->numbers()
-                ->symbols()]
+                ->mixedCase() // au moins 1 minuscule et 1 majuscule
+                ->letters() // au moins une lettre
+                ->numbers() // au moins un chiffre
+                ->symbols()] // au moins un caractère spécial
         ]);
 
         if (!Hash::check($request['password'], $user->password)) {
@@ -93,6 +93,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('boutique')->with('message', 'Utilisateur supprimé');
+        return redirect()->route('admin.index')->with('message', 'Utilisateur supprimé');
     }
 }

@@ -51,6 +51,7 @@
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email">
+                                        <div class="form-text">Nous ne partagerons jamais votre e-mail avec des tiers.</div>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -68,6 +69,16 @@
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
+                                        <div class="form-text">Votre mot de passe doit contenir :
+                                            <ul>
+                                                <li>au moins 8 caractères</li>
+                                                <li>au moins une lettre</li>
+                                                <li>au moins un chiffre</li>
+                                                <li>au moins une majuscule et une minuscule</li>
+                                                <li>au moins un caractère spécial : ! @ # $ % ^ & * ?</li>
+                                            </ul>
+                                        </div>
+
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -88,24 +99,22 @@
                             </div>
 
 
-                            <div class="form-group row text-center">
-                                <div class="col-md-10">
+                            <div class="form-group text-center">
+                                <div class="row">
                                     <label form="politique">J'ai lu et j'accepte les <a
                                             href="{{ route('politique') }}">mentions légales et la politique de
                                             confidentialité</a>
                                     </label>
                                 </div>
-                                <div class="col-md-2">
-                                    <input class="mx-auto" type="checkbox" name="politique" id="politique"
+                                <div class="row p-2">
+                                    <input type="checkbox" name="politique" id="politique"
                                         onclick="toggleValidationButtonDisplay()">
                                 </div>
                             </div>
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button id="valider" type="submit" class="btn btn-primary" style="visibility: hidden">
-                                        {{ __('Register') }}
+                            <div class="row mb-0 d-flex justify-content-center">
+                                    <button id="valider" type="submit" class="w-50 btn boutonRouge" style="visibility: hidden">
+                                    Inscription
                                     </button>
-                                </div>
                             </div>
                         </form>
                     </div>
